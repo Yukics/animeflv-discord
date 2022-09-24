@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  proxy:
+    # DockerHub mirror flaresolverr/flaresolverr:latest
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    environment:
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_HTML=${LOG_HTML:-false}
+      - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+      - TZ=Europe/Madrid
+    restart: unless-stopped 
+    ports:
+      - 8191:8191
+  scrapper:
+    build: .
+    environment:
+      - PROXY=http://proxy:8191/v1
+      - CHECK_INTERVAL=10s
+      - DISCORD_API=a
+      - ANIMEFLV_URL=https://www3.animeflv.net
+      - WAIT_HOSTS=proxy:8191
+    restart: unless-stopped
+    depends_on:
+      - proxy
