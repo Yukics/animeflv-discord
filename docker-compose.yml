@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 services:
   proxy:
     # DockerHub mirror flaresolverr/flaresolverr:latest
@@ -16,7 +16,7 @@ services:
     environment:
       - PROXY=http://proxy:8191/v1
       - CHECK_INTERVAL=10s
-      - DISCORD_API=a
+      - DISCORD_WEBHOOK=https://discord.com/api/webhooks/1023348456426835989/ihPFQ5U6M1w-yQvG-ajsn9wxshB_gc_yqcrALxkDt9m48_r7uVquo_SFVyf0Hx9p_cOA
       - ANIMEFLV_URL=https://www3.animeflv.net
       - WAIT_HOSTS=proxy:8191
     restart: unless-stopped
