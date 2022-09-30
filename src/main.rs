@@ -73,9 +73,11 @@ async fn main ()-> Result<(), Box<dyn std::error::Error>> {
             let last = &last_anime_list_array;
             let new = &anime_list_array;
             tokio::task::spawn(send_discord(last.to_vec(),new.to_vec()));
-        } else {
-            println!("Nothing new");
-        }
+        } 
+        // ? Unocmment only for debugging
+        // else {
+        //     println!("Nothing new");
+        // }
 
         last_anime_list_array = anime_list_array;
 
