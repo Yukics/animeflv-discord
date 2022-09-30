@@ -19,10 +19,11 @@ async fn main ()-> Result<(), Box<dyn std::error::Error>> {
     // let animeflv_url = "https://www3.animeflv.net";
 
     let millis = parse_time(env::var("CHECK_INTERVAL").unwrap().to_string());
+    // let millis = parse_time("10s".to_string());
 
     let payload = json!({
         "cmd": "request.get",
-        "url": &animeflv_url,
+        "url": animeflv_url,
         "maxTimeout": 60000
     });
 
@@ -74,8 +75,8 @@ async fn main ()-> Result<(), Box<dyn std::error::Error>> {
             let new = &anime_list_array;
             tokio::task::spawn(send_discord(last.to_vec(),new.to_vec()));
         } 
-        // ? Unocmment only for debugging
         // else {
+        //?    Uncomment only for debugging
         //     println!("Nothing new");
         // }
 
