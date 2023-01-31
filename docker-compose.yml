@@ -8,15 +8,15 @@ services:
       - LOG_HTML=${LOG_HTML:-false}
       - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
       - TZ=Europe/Madrid
-    restart: unless-stopped 
-    ports:
-      - 8191:8191
+    restart: unless-stopped
+#    ports:
+#      - 8191:8191
   scrapper:
     build: .
     environment:
       - PROXY=http://proxy:8191/v1
-      - CHECK_INTERVAL=10s
-      - DISCORD_WEBHOOK=https://discord.com/api/webhooks/1023348456426835989/ihPFQ5U6M1w-yQvG-ajsn9wxshB_gc_yqcrALxkDt9m48_r7uVquo_SFVyf0Hx9p_cOA
+      - CHECK_INTERVAL=30s
+      - DISCORD_WEBHOOK=https://discord.com/api/webhooks/1026627858564644935/73d-R-FiO1SfTXBVMRbaoLXV_YANTfbQuIS-WZ2uU8bv-g4GRs9ztQ1EqGChroxhZBEQ
       - ANIMEFLV_URL=https://www3.animeflv.net
       - WAIT_HOSTS=proxy:8191
     restart: unless-stopped
